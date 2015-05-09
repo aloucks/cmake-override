@@ -15,14 +15,24 @@ cmake.exe -G "MSYS Makefiles" %*
 However, this doesn't work very well with an MSYS shell.
 
 This ```cmake.exe``` will add "-G MSYS Makefiles" to the command line and
-attempt to execute the actual CMake executable.
+call the actual CMake executable.
 
-The following paths will be searched for the executable:
+The executable path may be explicitly set with the ```CMAKE_EXE_PATH```
+environment variable.
+
+The generator name may be set with the ```CMAKE_GEN_NAME``` environment
+variable.
+
+The following paths will be searched when executable is not specified via
+environment variable:
 - C:\Program Files\CMake\bin\cmake.exe
 - C:\Program Files (x86)\CMake\bin\cmake.exe
 
-The path may be explicitly set with the ```CMAKE_EXE_PATH``` environment
-variable.
+Example:
 
-The generator name may be set with the ```CMAKE_GENERATOR_NAME``` environment
-variable.
+```bash
+$ export PATH=/c/path/to/cmake/override/bin:$PATH
+$ export CMAKE_EXE_PATH=/c/CMake/bin/cmake.exe
+$ export CMAKE_GEN_NAME="MSYS Makefiles"
+$ cargo build myapp
+```
