@@ -1,0 +1,10 @@
+[package]
+name = "cmake-generator-name"
+version = "0.1.0"
+authors = ["Aaron Loucks <aloucks@cofront.net>"]
+
+[dependencies]
+term = "0.2"
+
+[[bin]]
+name = "cmake"
